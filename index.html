@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ToolFinder AI — Find the Right AI Tool</title>
+  <meta
+    name="description"
+    content="Discover the best AI tools for writing, images, video, coding, productivity and more."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #07090d;
+      --card: #10131a;
+      --card-hover: #151923;
+      --text: #f5f7fb;
+      --muted: #9ca3af;
+      --border: #242936;
+      --accent: #7c5cff;
+      --accent2: #4f8cff;
+      --green: #39d98a;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%, #222044 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 9, 13, 0.88);
+      backdrop-filter: blur(15px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1150px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #8d73ff;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 950px;
+      margin: auto;
+      padding: 80px 20px 45px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 13px;
+      border: 1px solid #342c60;
+      background: #15112b;
+      color: #b9aaff;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 70px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #9b83ff, #5da1ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      max-width: 720px;
+      margin: 32px auto 0;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 19px 22px;
+      padding-right: 55px;
+      border: 1px solid var(--border);
+      background: #0e1117;
+      color: white;
+      border-radius: 15px;
+      outline: none;
+      font-size: 16px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777f90;
+      font-size: 20px;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      max-width: 1150px;
+      margin: 10px auto 35px;
+      padding: 0 20px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .category-btn {
+      border: 1px solid var(--border);
+      background: #0d1016;
+      color: var(--muted);
+      padding: 10px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: #19152e;
+      border-color: #5946a9;
+      color: white;
+    }
+
+    /* MAIN */
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 20px 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      font-size: 24px;
+    }
+
+    .result-count {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CARDS */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .tool-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #11141b, #0d1015);
+      border-radius: 18px;
+      padding: 22px;
+      transition: 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      background: var(--card-hover);
+      border-color: #3a4050;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+    }
+
+    .tool-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: #191d27;
+      border: 1px solid #292f3d;
+      border-radius: 13px;
+      font-size: 23px;
+    }
+
+    .featured {
+      font-size: 11px;
+      color: #bdafff;
+      background: #211a42;
+      border: 1px solid #3a2e71;
+      padding: 5px 8px;
+      border-radius: 999px;
+    }
+
+    .tool-card h3 {
+      margin-top: 18px;
+      font-size: 19px;
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 9px 0 16px;
+      min-height: 65px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      background: #171a21;
+      color: #aeb5c3;
+      padding: 5px 8px;
+      border-radius: 7px;
+      font-size: 11px;
+    }
+
+    .visit-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .visit-btn:hover {
+      opacity: 0.88;
+    }
+
+    /* EMPTY */
+
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 70px 20px;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: #737b89;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 55px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .section-heading {
+        align-items: flex-end;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">ToolFinder<span>AI</span></div>
+      <div class="nav-link">Discover useful AI tools</div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="badge">✦ Discover AI tools faster</div>
+
+    <h1>
+      Find the right<br />
+      <span>AI tool for you.</span>
+    </h1>
+
+    <p>
+      Search hundreds of useful AI tools for writing, images, video,
+      coding, productivity and more.
+    </p>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="What do you want to do? e.g. create videos..."
+        autocomplete="off"
+      />
+      <div class="search-icon">⌕</div>
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORY BUTTONS -->
+
+  <div class="categories">
+
+    <button class="category-btn active" data-category="All">
+      All
+    </button>
+
+    <button class="category-btn" data-category="Writing">
+      ✍️ Writing
+    </button>
+
+    <button class="category-btn" data-category="Image">
+      🎨 Image
+    </button>
+
+    <button class="category-btn" data-category="Video">
+      🎬 Video
+    </button>
+
+    <button class="category-btn" data-category="Coding">
+      💻 Coding
+    </button>
+
+    <button class="category-btn" data-category="Productivity">
+      ⚡ Productivity
+    </button>
+
+    <button class="category-btn" data-category="Audio">
+      🎵 Audio
+    </button>
+
+  </div>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <div class="section-heading">
+      <h2>Explore AI Tools</h2>
+      <div class="result-count" id="resultCount">
+        0 tools
+      </div>
+    </div>
+
+    <div class="tools-grid" id="toolsGrid"></div>
+
+    <div class="empty" id="emptyState">
+      <div class="empty-icon">🔍</div>
+      <h3>No tools found</h3>
+      <p>Try another search or category.</p>
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 ToolFinder AI — Discover tools that make work easier.
+  </footer>
+
+
+  <script>
+
+    /*
+      TOOL DATABASE
+
+      You can add more tools here later.
+    */
+
+    const tools = [
+
+      {
+        name: "ChatGPT",
+        icon: "🤖",
+        category: "Writing",
+        description: "AI assistant for writing, brainstorming, learning, coding and everyday tasks.",
+        tags: ["AI", "Writing", "Chat"],
+        featured: true,
+        url: "https://chatgpt.com/"
+      },
+
+      {
+        name: "Claude",
+        icon: "🧠",
+        category: "Writing",
+        description: "AI assistant useful for writing, analysis, research and working with documents.",
+        tags: ["AI", "Writing", "Research"],
+        featured: true,
+        url: "https://claude.ai/"
+      },
+
+      {
+        name: "Canva",
+        icon: "🎨",
+        category: "Image",
+        description: "Create social posts, presentations, graphics, thumbnails and visual content.",
+        tags: ["Design", "Images", "Social"],
+        featured: true,
+        url: "https://www.canva.com/"
+      },
+
+      {
+        name: "Adobe Firefly",
+        icon: "🔥",
+        category: "Image",
+        description: "Generate and edit creative images with generative AI.",
+        tags: ["Images", "Design", "AI"],
+        featured: false,
+        url: "https://firefly.adobe.com/"
+      },
+
+      {
+        name: "Leonardo AI",
+        icon: "🖼️",
+        category: "Image",
+        description: "Create AI-generated images and creative visual assets.",
+        tags: ["Images", "Art", "AI"],
+        featured: true,
+        url: "https://leonardo.ai/"
+      },
+
+      {
+        name: "Runway",
+        icon: "🎬",
+        category: "Video",
+        description: "AI-powered tools for generating and editing creative videos.",
+        tags: ["Video", "Generation", "Editing"],
+        featured: true,
+        url: "https://runwayml.com/"
+      },
+
+      {
+        name: "CapCut",
+        icon: "✂️",
+        category: "Video",
+        description: "Video editor with templates, effects, captions and AI-powered features.",
+        tags: ["Video", "Editing", "Reels"],
+        featured: true,
+        url: "https://www.capcut.com/"
+      },
+
+      {
+        name: "Descript",
+        icon: "🎙️",
+        category: "Video",
+        description: "Edit video and audio using text-based editing and AI features.",
+        tags: ["Video", "Audio", "Editing"],
+        featured: false,
+        url: "https://www.descript.com/"
+      },
+
+      {
+        name: "GitHub Copilot",
+        icon: "💻",
+        category: "Coding",
+        description: "AI coding assistant that helps developers write and understand code.",
+        tags: ["Coding", "Programming", "AI"],
+        featured: true,
+        url: "https://github.com/features/copilot"
+      },
+
+      {
+        name: "Bolt",
+        icon: "⚡",
+        category: "Coding",
+        description: "Build web applications with AI-assisted coding.",
+        tags: ["Coding", "Websites", "AI"],
+        featured: true,
+        url: "https://bolt.new/"
+      },
+
+      {
+        name: "Cursor",
+        icon: "⌨️",
+        category: "Coding",
+        description: "AI-powered code editor designed for faster software development.",
+        tags: ["Coding", "IDE", "AI"],
+        featured: false,
+        url: "https://www.cursor.com/"
+      },
+
+      {
+        name: "Notion",
+        icon: "📝",
+        category: "Productivity",
+        description: "Workspace for notes, documents, tasks, databases and team organization.",
+        tags: ["Notes", "Tasks", "Workspace"],
+        featured: true,
+        url: "https://www.notion.so/"
+      },
+
+      {
+        name: "Perplexity",
+        icon: "🔎",
+        category: "Productivity",
+        description: "AI-powered search and research assistant for finding information.",
+        tags: ["Search", "Research", "AI"],
+        featured: true,
+        url: "https://www.perplexity.ai/"
+      },
+
+      {
+        name: "Grammarly",
+        icon: "✏️",
+        category: "Writing",
+        description: "Writing assistant for grammar, clarity, tone and communication.",
+        tags: ["Grammar", "Writing", "Editing"],
+        featured: false,
+        url: "https://www.grammarly.com/"
+      },
+
+      {
+        name: "ElevenLabs",
+        icon: "🔊",
+        category: "Audio",
+        description: "AI voice and audio tools for creators and developers.",
+        tags: ["Voice", "Audio", "AI"],
+        featured: true,
+        url: "https://elevenlabs.io/"
+      },
+
+      {
+        name: "Suno",
+        icon: "🎵",
+        category: "Audio",
+        description: "Create music with generative AI.",
+        tags: ["Music", "Audio", "AI"],
+        featured: true,
+        url: "https://suno.com/"
+      },
+
+      {
+        name: "Otter",
+        icon: "🎤",
+        category: "Audio",
+        description: "AI-powered meeting transcription and note-taking.",
+        tags: ["Meetings", "Transcription", "Notes"],
+        featured: false,
+        url: "https://otter.ai/"
+      },
+
+      {
+        name: "Gamma",
+        icon: "📊",
+        category: "Productivity",
+        description: "Create presentations and visual documents with AI.",
+        tags: ["Presentations", "AI", "Design"],
+        featured: true,
+        url: "https://gamma.app/"
+      },
+
+      {
+        name: "Jasper",
+        icon: "📝",
+        category: "Writing",
+        description: "AI tools for marketing content and business writing.",
+        tags: ["Marketing", "Writing", "Business"],
+        featured: false,
+        url: "https://www.jasper.ai/"
+      },
+
+      {
+        name: "Photoroom",
+        icon: "📸",
+        category: "Image",
+        description: "Create and edit product and social media images quickly.",
+        tags: ["Photos", "Editing", "Ecommerce"],
+        featured: false,
+        url: "https://www.photoroom.com/"
+      }
+
+    ];
+
+
+    const grid = document.getElementById("toolsGrid");
+    const searchInput = document.getElementById("searchInput");
+    const resultCount = document.getElementById("resultCount");
+    const emptyState = document.getElementById("emptyState");
+    const categoryButtons = document.querySelectorAll(".category-btn");
+
+    let currentCategory = "All";
+
+
+    /*
+      DISPLAY TOOLS
+    */
+
+    function displayTools() {
+
+      const searchTerm =
+        searchInput.value.toLowerCase().trim();
+
+      const filteredTools = tools.filter(tool => {
+
+        const matchesCategory =
+          currentCategory === "All" ||
+          tool.category === currentCategory;
+
+        const searchableText =
+          (
+            tool.name +
+            " " +
+            tool.category +
+            " " +
+            tool.description +
+            " " +
+            tool.tags.join(" ")
+          ).toLowerCase();
+
+        const matchesSearch =
+          searchableText.includes(searchTerm);
+
+        return matchesCategory && matchesSearch;
+
+      });
+
+
+      grid.innerHTML = "";
+
+
+      filteredTools.forEach(tool => {
+
+        const card = document.createElement("div");
+
+        card.className = "tool-card";
+
+        card.innerHTML = `
+
+          <div class="tool-top">
+
+            <div class="tool-icon">
+              ${tool.icon}
+            </div>
+
+            ${
+              tool.featured
+              ? `<div class="featured">★ Featured</div>`
+              : ""
+            }
+
+          </div>
+
+          <h3>${tool.name}</h3>
+
+          <p>${tool.description}</p>
+
+          <div class="tags">
+
+            ${tool.tags
+              .map(tag => `<span class="tag">${tag}</span>`)
+              .join("")
+            }
+
+          </div>
+
+          <a
+            class="visit-btn"
+            href="${tool.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Tool →
+          </a>
+
+        `;
+
+        grid.appendChild(card);
+
+      });
+
+
+      resultCount.textContent =
+        `${filteredTools.length} ${
+          filteredTools.length === 1
+          ? "tool"
+          : "tools"
+        }`;
+
+
+      if (filteredTools.length === 0) {
+        emptyState.style.display = "block";
+      } else {
+        emptyState.style.display = "none";
+      }
+
+    }
+
+
+    /*
+      SEARCH
+    */
+
+    searchInput.addEventListener(
+      "input",
+      displayTools
+    );
+
+
+    /*
+      CATEGORY FILTER
+    */
+
+    categoryButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        categoryButtons.forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        currentCategory =
+          button.dataset.category;
+
+        displayTools();
+
+      });
+
+    });
+
+
+    /*
+      INITIAL LOAD
+    */
+
+    displayTools();
+
+  </script>
+
+</body>
+  </html>
