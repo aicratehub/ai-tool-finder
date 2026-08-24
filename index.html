@@ -487,1010 +487,831 @@
       TOOL DATABASE
 
       You can add more tools here later.
-    */
-
+    */ 
     const tools = [
 
-      {
-        name: "ChatGPT",
-        icon: "🤖",
-        category: "Writing",
-        description: "AI assistant for writing, brainstorming, learning, coding and everyday tasks.",
-        tags: ["AI", "Writing", "Chat"],
-        featured: true,
-        url: "https://chatgpt.com/"
-      },
-
-      {
-        name: "Claude",
-        icon: "🧠",
-        category: "Writing",
-        description: "AI assistant useful for writing, analysis, research and working with documents.",
-        tags: ["AI", "Writing", "Research"],
-        featured: true,
-        url: "https://claude.ai/"
-      },
-
-      {
-        name: "Canva",
-        icon: "🎨",
-        category: "Image",
-        description: "Create social posts, presentations, graphics, thumbnails and visual content.",
-        tags: ["Design", "Images", "Social"],
-        featured: true,
-        url: "https://www.canva.com/"
-      },
-
-      {
-        name: "Adobe Firefly",
-        icon: "🔥",
-        category: "Image",
-        description: "Generate and edit creative images with generative AI.",
-        tags: ["Images", "Design", "AI"],
-        featured: false,
-        url: "https://firefly.adobe.com/"
-      },
-
-      {
-        name: "Leonardo AI",
-        icon: "🖼️",
-        category: "Image",
-        description: "Create AI-generated images and creative visual assets.",
-        tags: ["Images", "Art", "AI"],
-        featured: true,
-        url: "https://leonardo.ai/"
-      },
-
-      {
-        name: "Runway",
-        icon: "🎬",
-        category: "Video",
-        description: "AI-powered tools for generating and editing creative videos.",
-        tags: ["Video", "Generation", "Editing"],
-        featured: true,
-        url: "https://runwayml.com/"
-      },
-
-      {
-        name: "CapCut",
-        icon: "✂️",
-        category: "Video",
-        description: "Video editor with templates, effects, captions and AI-powered features.",
-        tags: ["Video", "Editing", "Reels"],
-        featured: true,
-        url: "https://www.capcut.com/"
-      },
-
-      {
-        name: "Descript",
-        icon: "🎙️",
-        category: "Video",
-        description: "Edit video and audio using text-based editing and AI features.",
-        tags: ["Video", "Audio", "Editing"],
-        featured: false,
-        url: "https://www.descript.com/"
-      },
-
-      {
-        name: "GitHub Copilot",
-        icon: "💻",
-        category: "Coding",
-        description: "AI coding assistant that helps developers write and understand code.",
-        tags: ["Coding", "Programming", "AI"],
-        featured: true,
-        url: "https://github.com/features/copilot"
-      },
-
-      {
-        name: "Bolt",
-        icon: "⚡",
-        category: "Coding",
-        description: "Build web applications with AI-assisted coding.",
-        tags: ["Coding", "Websites", "AI"],
-        featured: true,
-        url: "https://bolt.new/"
-      },
-
-      {
-        name: "Cursor",
-        icon: "⌨️",
-        category: "Coding",
-        description: "AI-powered code editor designed for faster software development.",
-        tags: ["Coding", "IDE", "AI"],
-        featured: false,
-        url: "https://www.cursor.com/"
-      },
-
-      {
-        name: "Notion",
-        icon: "📝",
-        category: "Productivity",
-        description: "Workspace for notes, documents, tasks, databases and team organization.",
-        tags: ["Notes", "Tasks", "Workspace"],
-        featured: true,
-        url: "https://www.notion.so/"
-      },
-
-      {
-        name: "Perplexity",
-        icon: "🔎",
-        category: "Productivity",
-        description: "AI-powered search and research assistant for finding information.",
-        tags: ["Search", "Research", "AI"],
-        featured: true,
-        url: "https://www.perplexity.ai/"
-      },
-
-      {
-        name: "Grammarly",
-        icon: "✏️",
-        category: "Writing",
-        description: "Writing assistant for grammar, clarity, tone and communication.",
-        tags: ["Grammar", "Writing", "Editing"],
-        featured: false,
-        url: "https://www.grammarly.com/"
-      },
-
-      {
-        name: "ElevenLabs",
-        icon: "🔊",
-        category: "Audio",
-        description: "AI voice and audio tools for creators and developers.",
-        tags: ["Voice", "Audio", "AI"],
-        featured: true,
-        url: "https://elevenlabs.io/"
-      },
-
-      {
-        name: "Suno",
-        icon: "🎵",
-        category: "Audio",
-        description: "Create music with generative AI.",
-        tags: ["Music", "Audio", "AI"],
-        featured: true,
-        url: "https://suno.com/"
-      },
-
-      {
-        name: "Otter",
-        icon: "🎤",
-        category: "Audio",
-        description: "AI-powered meeting transcription and note-taking.",
-        tags: ["Meetings", "Transcription", "Notes"],
-        featured: false,
-        url: "https://otter.ai/"
-      },
-
-      {
-        name: "Gamma",
-        icon: "📊",
-        category: "Productivity",
-        description: "Create presentations and visual documents with AI.",
-        tags: ["Presentations", "AI", "Design"],
-        featured: true,
-        url: "https://gamma.app/"
-      },
-
-      {
-        name: "Jasper",
-        icon: "📝",
-        category: "Writing",
-        description: "AI tools for marketing content and business writing.",
-        tags: ["Marketing", "Writing", "Business"],
-        featured: false,
-        url: "https://www.jasper.ai/"
-      },
-
-      {
-        name: "Photoroom",
-        icon: "📸",
-        category: "Image",
-        description: "Create and edit product and social media images quickly.",
-        tags: ["Photos", "Editing", "Ecommerce"],
-        featured: false,
-        url: "https://www.photoroom.com/"
-      },
- {
-  name: "Google Gemini",
-  icon: "✨",
-  category: "AI Assistant",
-  description: "Google AI assistant for writing, research, learning, coding and everyday tasks.",
-  tags: ["AI", "Assistant", "Google"],
-  featured: true,
-  url: "https://gemini.google.com/"
-},
-
-{
-  name: "Microsoft Copilot",
-  icon: "🪟",
-  category: "AI Assistant",
-  description: "AI assistant from Microsoft for productivity, research, writing and everyday tasks.",
-  tags: ["AI", "Microsoft", "Productivity"],
-  featured: true,
-  url: "https://copilot.microsoft.com/"
-},
-
-{
-  name: "Grok",
-  icon: "⚡",
-  category: "AI Assistant",
-  description: "AI assistant for answering questions, reasoning, research and creative tasks.",
-  tags: ["AI", "Assistant", "Research"],
-  featured: true,
-  url: "https://grok.com/"
-},
-
-{
-  name: "DeepSeek",
-  icon: "🔬",
-  category: "AI Assistant",
-  description: "AI platform focused on reasoning, coding and general-purpose assistance.",
-  tags: ["AI", "Coding", "Reasoning"],
-  featured: true,
-  url: "https://chat.deepseek.com/"
-},
-
-{
-  name: "Poe",
-  icon: "💬",
-  category: "AI Assistant",
-  description: "Platform for accessing and interacting with multiple AI models and bots.",
-  tags: ["AI", "Chat", "Models"],
-  featured: false,
-  url: "https://poe.com/"
-},
-
-{
-  name: "Mistral Le Chat",
-  icon: "🌟",
-  category: "AI Assistant",
-  description: "AI assistant from Mistral for research, writing, analysis and problem solving.",
-  tags: ["AI", "Assistant", "Research"],
-  featured: false,
-  url: "https://chat.mistral.ai/"
-},
-
-{
-  name: "Meta AI",
-  icon: "🔵",
-  category: "AI Assistant",
-  description: "AI assistant from Meta for questions, ideas, writing and everyday tasks.",
-  tags: ["AI", "Assistant", "Meta"],
-  featured: false,
-  url: "https://www.meta.ai/"
-},
-
-{
-  name: "Character.AI",
-  icon: "🎭",
-  category: "AI Assistant",
-  description: "Platform for interacting with AI characters and creating conversational experiences.",
-  tags: ["AI", "Chat", "Characters"],
-  featured: false,
-  url: "https://character.ai/"
-},
-
-{
-  name: "NotebookLM",
-  icon: "📓",
-  category: "Research",
-  description: "AI research assistant that helps users understand and work with their sources.",
-  tags: ["Research", "Notes", "AI"],
-  featured: true,
-  url: "https://notebooklm.google.com/"
-},
-
-{
-  name: "Hugging Face",
-  icon: "🤗",
-  category: "AI Platform",
-  description: "AI community and platform for models, datasets and machine learning tools.",
-  tags: ["AI", "Models", "Developer"],
-  featured: true,
-  url: "https://huggingface.co/"
-},
-
-{
-  name: "Midjourney",
-  icon: "🎨",
-  category: "Image",
-  description: "Generative AI platform for creating images from text prompts.",
-  tags: ["Images", "Art", "AI"],
-  featured: true,
-  url: "https://www.midjourney.com/"
-},
-
-{
-  name: "Ideogram",
-  icon: "🔤",
-  category: "Image",
-  description: "AI image generator designed for creative visuals and text-focused designs.",
-  tags: ["Images", "Design", "AI"],
-  featured: true,
-  url: "https://ideogram.ai/"
-},
-
-{
-  name: "Recraft",
-  icon: "🧩",
-  category: "Design",
-  description: "AI design platform for creating illustrations, images and vector graphics.",
-  tags: ["Design", "Vector", "AI"],
-  featured: false,
-  url: "https://www.recraft.ai/"
-},
-
-{
-  name: "Krea",
-  icon: "🖌️",
-  category: "Image",
-  description: "AI creative platform for generating and enhancing images and visual content.",
-  tags: ["Images", "Design", "AI"],
-  featured: false,
-  url: "https://www.krea.ai/"
-},
-
-{
-  name: "Freepik AI",
-  icon: "🖼️",
-  category: "Image",
-  description: "Creative platform with AI tools for generating and editing visual content.",
-  tags: ["Images", "Design", "AI"],
-  featured: false,
-  url: "https://www.freepik.com/ai"
-},
-
-{
-  name: "Pixlr",
-  icon: "🎨",
-  category: "Image",
-  description: "Online photo editing platform with AI-powered creative tools.",
-  tags: ["Photos", "Editing", "AI"],
-  featured: false,
-  url: "https://pixlr.com/"
-},
-
-{
-  name: "Fotor",
-  icon: "📷",
-  category: "Image",
-  description: "Online photo editor with AI-powered image creation and enhancement tools.",
-  tags: ["Photos", "Editing", "AI"],
-  featured: false,
-  url: "https://www.fotor.com/"
-},
-
-{
-  name: "Picsart",
-  icon: "🎭",
-  category: "Image",
-  description: "Creative platform for photo and video editing with AI-powered features.",
-  tags: ["Photos", "Design", "Editing"],
-  featured: false,
-  url: "https://picsart.com/"
-},
-
-{
-  name: "Remove.bg",
-  icon: "✂️",
-  category: "Image",
-  description: "Automatically removes backgrounds from images using AI.",
-  tags: ["Background", "Photos", "Editing"],
-  featured: false,
-  url: "https://www.remove.bg/"
-},
-
-{
-  name: "Clipdrop",
-  icon: "📸",
-  category: "Image",
-  description: "AI tools for image cleanup, background removal and creative image editing.",
-  tags: ["Images", "Editing", "AI"],
-  featured: false,
-  url: "https://clipdrop.co/"
-},
-
-{
-  name: "Topaz Photo AI",
-  icon: "🔍",
-  category: "Image",
-  description: "AI-powered software for enhancing, sharpening and improving photos.",
-  tags: ["Photos", "Enhancement", "AI"],
-  featured: false,
-  url: "https://www.topazlabs.com/topaz-photo-ai"
-},
-
-{
-  name: "Magnific AI",
-  icon: "✨",
-  category: "Image",
-  description: "AI image enhancement and upscaling platform for creative projects.",
-  tags: ["Images", "Upscaling", "AI"],
-  featured: false,
-  url: "https://magnific.ai/"
-},
-
-{
-  name: "Luma AI",
-  icon: "🌐",
-  category: "Video",
-  description: "AI platform for generating and working with video, images and 3D content.",
-  tags: ["Video", "3D", "AI"],
-  featured: true,
-  url: "https://lumalabs.ai/"
-},
-
-{
-  name: "Kling AI",
-  icon: "🎞️",
-  category: "Video",
-  description: "AI creative platform for generating videos and visual content.",
-  tags: ["Video", "Generation", "AI"],
-  featured: true,
-  url: "https://klingai.com/"
-},
-
-{
-  name: "Pika",
-  icon: "🎥",
-  category: "Video",
-  description: "AI video creation platform for generating and transforming videos.",
-  tags: ["Video", "Generation", "AI"],
-  featured: false,
-  url: "https://pika.art/"
-},
-
-{
-  name: "Synthesia",
-  icon: "🧑‍💻",
-  category: "Video",
-  description: "AI video platform for creating videos with digital avatars and voiceovers.",
-  tags: ["Video", "Avatars", "AI"],
-  featured: false,
-  url: "https://www.synthesia.io/"
-},
-
-{
-  name: "VEED",
-  icon: "🎬",
-  category: "Video",
-  description: "Online video editor with AI tools for social and professional video creation.",
-  tags: ["Video", "Editing", "AI"],
-  featured: false,
-  url: "https://www.veed.io/"
-},
-
-{
-  name: "Descript",
-  icon: "🎙️",
-  category: "Video",
-  description: "Audio and video editor with transcription-based editing and AI tools.",
-  tags: ["Video", "Audio", "Editing"],
-  featured: false,
-  url: "https://www.descript.com/"
-},
-
-{
-  name: "InVideo AI",
-  icon: "📹",
-  category: "Video",
-  description: "AI video creation platform for turning ideas and text into videos.",
-  tags: ["Video", "AI", "Content"],
-  featured: true,
-  url: "https://invideo.io/"
-},
-
-{
-  name: "OpusClip",
-  icon: "✂️",
-  category: "Video",
-  description: "AI tool for turning long videos into short-form clips for social media.",
-  tags: ["Video", "Shorts", "Social"],
-  featured: true,
-  url: "https://www.opus.pro/"
-},
-
-{
-  name: "Murf AI",
-  icon: "🎙️",
-  category: "Audio",
-  description: "AI voice generator for creating professional voiceovers.",
-  tags: ["Voice", "Voiceover", "AI"],
-  featured: false,
-  url: "https://murf.ai/"
-},
-
-{
-  name: "PlayHT",
-  icon: "🔊",
-  category: "Audio",
-  description: "AI voice platform for generating realistic speech and voiceovers.",
-  tags: ["Voice", "Audio", "AI"],
-  featured: false,
-  url: "https://play.ht/"
-},
-
-{
-  name: "Adobe Podcast",
-  icon: "🎤",
-  category: "Audio",
-  description: "Adobe tools for recording, editing and enhancing spoken audio.",
-  tags: ["Podcast", "Audio", "Editing"],
-  featured: false,
-  url: "https://podcast.adobe.com/"
-},
-
-{
-  name: "AIVA",
-  icon: "🎼",
-  category: "Music",
-  description: "AI music composition platform for creating original musical tracks.",
-  tags: ["Music", "Composition", "AI"],
-  featured: false,
-  url: "https://www.aiva.ai/"
-},
-
-{
-  name: "Udio",
-  icon: "🎶",
-  category: "Music",
-  description: "AI music creation platform for generating and developing songs.",
-  tags: ["Music", "Songs", "AI"],
-  featured: true,
-  url: "https://www.udio.com/"
-},
-
-{
-  name: "Soundraw",
-  icon: "🎵",
-  category: "Music",
-  description: "AI music generator for creating customizable tracks for creative projects.",
-  tags: ["Music", "Audio", "Creator"],
-  featured: false,
-  url: "https://soundraw.io/"
-},
-
-{
-  name: "Boomy",
-  icon: "🎧",
-  category: "Music",
-  description: "AI music creation platform for generating original songs.",
-  tags: ["Music", "Songs", "AI"],
-  featured: false,
-  url: "https://boomy.com/"
-},
-
-{
-  name: "Sora",
-  icon: "🎞️",
-  category: "Video",
-  description: "AI technology for generating videos from text and creative prompts.",
-  tags: ["Video", "Generation", "AI"],
-  featured: true,
-  url: "https://openai.com/sora/"
-},
-
-{
-  name: "Replit",
-  icon: "💻",
-  category: "Coding",
-  description: "Online development platform with AI-assisted coding and app creation.",
-  tags: ["Coding", "Apps", "AI"],
-  featured: true,
-  url: "https://replit.com/"
-},
-
-{
-  name: "Windsurf",
-  icon: "🌊",
-  category: "Coding",
-  description: "AI-powered development environment for software development.",
-  tags: ["Coding", "IDE", "AI"],
-  featured: true,
-  url: "https://windsurf.com/"
-},
-
-{
-  name: "Tabnine",
-  icon: "⌨️",
-  category: "Coding",
-  description: "AI coding assistant for code completion and developer productivity.",
-  tags: ["Coding", "Programming", "AI"],
-  featured: false,
-  url: "https://www.tabnine.com/"
-},
-
-{
-  name: "v0",
-  icon: "⚙️",
-  category: "Coding",
-  description: "AI-powered tool for generating user interfaces and web applications.",
-  tags: ["Coding", "Web", "UI"],
-  featured: true,
-  url: "https://v0.dev/"
-},
-
-{
-  name: "Lovable",
-  icon: "💜",
-  category: "Coding",
-  description: "AI-powered platform for creating web applications using natural language.",
-  tags: ["Coding", "Websites", "AI"],
-  featured: true,
-  url: "https://lovable.dev/"
-},
-
-{
-  name: "Amazon Q Developer",
-  icon: "☁️",
-  category: "Coding",
-  description: "AI assistant from AWS for software development and cloud tasks.",
-  tags: ["Coding", "AWS", "Developer"],
-  featured: false,
-  url: "https://aws.amazon.com/q/developer/"
-},
-
-{
-  name: "Gemini Code Assist",
-  icon: "👨‍💻",
-  category: "Coding",
-  description: "AI coding assistant from Google for software development.",
-  tags: ["Coding", "Google", "AI"],
-  featured: false,
-  url: "https://cloud.google.com/gemini/docs/codeassist/overview"
-},
-
-{
-  name: "Sourcegraph Cody",
-  icon: "🔎",
-  category: "Coding",
-  description: "AI coding assistant for understanding and writing software code.",
-  tags: ["Coding", "Developer", "AI"],
-  featured: false,
-  url: "https://sourcegraph.com/cody"
-},
-
-{
-  name: "Continue",
-  icon: "🔧",
-  category: "Coding",
-  description: "Open-source AI coding assistant for development environments.",
-  tags: ["Coding", "Developer", "Open Source"],
-  featured: false,
-  url: "https://www.continue.dev/"
-},
-
-{
-  name: "Zapier",
-  icon: "🔗",
-  category: "Automation",
-  description: "Automation platform for connecting apps and creating workflows.",
-  tags: ["Automation", "Workflow", "Productivity"],
-  featured: true,
-  url: "https://zapier.com/"
-},
-
-{
-  name: "Make",
-  icon: "🔄",
-  category: "Automation",
-  description: "Visual automation platform for connecting apps and building workflows.",
-  tags: ["Automation", "Workflow", "Integration"],
-  featured: false,
-  url: "https://www.make.com/"
-},
-
-{
-  name: "n8n",
-  icon: "⚙️",
-  category: "Automation",
-  description: "Workflow automation platform for connecting services and automating tasks.",
-  tags: ["Automation", "Workflow", "Developer"],
-  featured: true,
-  url: "https://n8n.io/"
-},
-
-{
-  name: "Airtable",
-  icon: "📋",
-  category: "Productivity",
-  description: "Flexible database and workflow platform for organizing business information.",
-  tags: ["Database", "Productivity", "Workflow"],
-  featured: false,
-  url: "https://www.airtable.com/"
-},
-
-{
+  // 1–10 AI ASSISTANTS & SEARCH
+
+  {
+    name: "ChatGPT",
+    icon: "🤖",
+    category: "AI Assistant",
+    description: "AI assistant for writing, learning, brainstorming, coding and everyday tasks.",
+    tags: ["AI", "Writing", "Chat"],
+    featured: true,
+    url: "https://chatgpt.com/"
+  },
+
+  {
+    name: "Claude",
+    icon: "🧠",
+    category: "AI Assistant",
+    description: "AI assistant for writing, analysis, reasoning and working with documents.",
+    tags: ["AI", "Writing", "Research"],
+    featured: true,
+    url: "https://claude.ai/"
+  },
+
+  {
+    name: "Google Gemini",
+    icon: "✨",
+    category: "AI Assistant",
+    description: "Google AI assistant for writing, research, coding and creative tasks.",
+    tags: ["Google", "AI", "Chat"],
+    featured: true,
+    url: "https://gemini.google.com/"
+  },
+
+  {
+    name: "Microsoft Copilot",
+    icon: "🪟",
+    category: "AI Assistant",
+    description: "AI assistant for productivity, research, writing and creative tasks.",
+    tags: ["Microsoft", "AI", "Productivity"],
+    featured: false,
+    url: "https://copilot.microsoft.com/"
+  },
+
+  {
+    name: "Perplexity",
+    icon: "🔎",
+    category: "Research",
+    description: "AI-powered search and research assistant for finding information.",
+    tags: ["Search", "Research", "AI"],
+    featured: true,
+    url: "https://www.perplexity.ai/"
+  },
+
+  {
+    name: "Grok",
+    icon: "⚡",
+    category: "AI Assistant",
+    description: "AI assistant for questions, reasoning, research and creative work.",
+    tags: ["AI", "Chat", "Research"],
+    featured: false,
+    url: "https://grok.com/"
+  },
+
+  {
+    name: "DeepSeek",
+    icon: "🔬",
+    category: "AI Assistant",
+    description: "AI platform for reasoning, coding and general-purpose assistance.",
+    tags: ["AI", "Coding", "Chat"],
+    featured: true,
+    url: "https://www.deepseek.com/"
+  },
+
+  {
+    name: "Poe",
+    icon: "💬",
+    category: "AI Assistant",
+    description: "Platform for interacting with different AI models and assistants.",
+    tags: ["AI", "Chat", "Models"],
+    featured: false,
+    url: "https://poe.com/"
+  },
+
+  {
+    name: "Mistral Le Chat",
+    icon: "🌟",
+    category: "AI Assistant",
+    description: "AI assistant for conversation, writing, analysis and problem solving.",
+    tags: ["AI", "Chat", "Writing"],
+    featured: false,
+    url: "https://chat.mistral.ai/"
+  },
+
+  {
+    name: "You.com",
+    icon: "🌐",
+    category: "Research",
+    description: "AI search and productivity platform for research and answers.",
+    tags: ["Search", "Research", "AI"],
+    featured: false,
+    url: "https://you.com/"
+  },
+
+
+  // 11–20 WRITING
+
+  {
+    name: "Jasper",
+    icon: "✍️",
+    category: "Writing",
+    description: "AI platform for marketing, business content and brand writing.",
+    tags: ["Writing", "Marketing", "Content"],
+    featured: false,
+    url: "https://www.jasper.ai/"
+  },
+
+  {
+    name: "Copy.ai",
+    icon: "📝",
+    category: "Writing",
+    description: "AI platform for creating marketing and business content.",
+    tags: ["Writing", "Marketing", "Copywriting"],
+    featured: false,
+    url: "https://www.copy.ai/"
+  },
+
+  {
+    name: "Grammarly",
+    icon: "🟢",
+    category: "Writing",
+    description: "Writing assistant for grammar, clarity, tone and communication.",
+    tags: ["Grammar", "Writing", "Editing"],
+    featured: true,
+    url: "https://www.grammarly.com/"
+  },
+
+  {
+    name: "QuillBot",
+    icon: "🔄",
+    category: "Writing",
+    description: "AI writing tool for paraphrasing, summarizing and improving text.",
+    tags: ["Writing", "Paraphrasing", "Grammar"],
+    featured: false,
+    url: "https://quillbot.com/"
+  },
+
+  {
+    name: "Writesonic",
+    icon: "✏️",
+    category: "Writing",
+    description: "AI platform for content creation, marketing and SEO workflows.",
+    tags: ["Writing", "SEO", "Marketing"],
+    featured: false,
+    url: "https://writesonic.com/"
+  },
+
+  {
+    name: "Wordtune",
+    icon: "🖊️",
+    category: "Writing",
+    description: "AI writing assistant for rewriting and improving sentences.",
+    tags: ["Writing", "Editing", "Rewriting"],
+    featured: false,
+    url: "https://www.wordtune.com/"
+  },
+
+  {
+    name: "Rytr",
+    icon: "📄",
+    category: "Writing",
+    description: "AI writing assistant for creating different types of content.",
+    tags: ["Writing", "Content", "AI"],
+    featured: false,
+    url: "https://rytr.me/"
+  },
+
+  {
+    name: "Sudowrite",
+    icon: "📚",
+    category: "Writing",
+    description: "AI writing assistant designed for creative and fiction writers.",
+    tags: ["Creative", "Writing", "Stories"],
+    featured: false,
+    url: "https://sudowrite.com/"
+  },
+
+  {
+    name: "Anyword",
+    icon: "📣",
+    category: "Writing",
+    description: "AI writing platform focused on marketing content and copy.",
+    tags: ["Writing", "Marketing", "Copywriting"],
+    featured: false,
+    url: "https://www.anyword.com/"
+  },
+
+  {
+    name: "HyperWrite",
+    icon: "⚙️",
+    category: "Writing",
+    description: "AI writing assistant for generating and improving content.",
+    tags: ["Writing", "AI", "Productivity"],
+    featured: false,
+    url: "https://www.hyperwriteai.com/"
+  },
+
+
+  // 21–35 IMAGE & DESIGN
+
+  {
+    name: "Midjourney",
+    icon: "🎨",
+    category: "Image",
+    description: "AI image generation platform for creating artistic visuals.",
+    tags: ["Images", "Art", "Generation"],
+    featured: true,
+    url: "https://www.midjourney.com/"
+  },
+
+  {
+    name: "Adobe Firefly",
+    icon: "🔥",
+    category: "Image",
+    description: "Adobe generative AI tools for creating and editing visual content.",
+    tags: ["Adobe", "Images", "Design"],
+    featured: true,
+    url: "https://firefly.adobe.com/"
+  },
+
+  {
+    name: "Leonardo AI",
+    icon: "🖼️",
+    category: "Image",
+    description: "AI creative platform for generating images and visual assets.",
+    tags: ["Images", "Art", "Generation"],
+    featured: true,
+    url: "https://leonardo.ai/"
+  },
+
+  {
+    name: "Ideogram",
+    icon: "💡",
+    category: "Image",
+    description: "AI image generator designed for creative visuals and text.",
+    tags: ["Images", "Design", "Text"],
+    featured: false,
+    url: "https://ideogram.ai/"
+  },
+
+  {
+    name: "Canva",
+    icon: "🟣",
+    category: "Design",
+    description: "Design platform with AI-powered tools for graphics and content.",
+    tags: ["Design", "Graphics", "AI"],
+    featured: true,
+    url: "https://www.canva.com/"
+  },
+
+  {
+    name: "Photoroom",
+    icon: "📸",
+    category: "Image",
+    description: "AI photo editing platform for product and social media images.",
+    tags: ["Photos", "Editing", "Ecommerce"],
+    featured: false,
+    url: "https://www.photoroom.com/"
+  },
+
+  {
+    name: "Remove.bg",
+    icon: "✂️",
+    category: "Image",
+    description: "Automatically removes backgrounds from images.",
+    tags: ["Background", "Photos", "Editing"],
+    featured: false,
+    url: "https://www.remove.bg/"
+  },
+
+  {
+    name: "Clipdrop",
+    icon: "🪄",
+    category: "Image",
+    description: "AI tools for image generation, cleanup, relighting and editing.",
+    tags: ["Images", "Editing", "AI"],
+    featured: false,
+    url: "https://clipdrop.co/"
+  },
+
+  {
+    name: "Pixlr",
+    icon: "🖌️",
+    category: "Image",
+    description: "Online photo editor with creative and AI-powered features.",
+    tags: ["Photo", "Editing", "Design"],
+    featured: false,
+    url: "https://pixlr.com/"
+  },
+
+  {
+    name: "Fotor",
+    icon: "🌈",
+    category: "Image",
+    description: "Online photo editor and AI image creation platform.",
+    tags: ["Photos", "Design", "AI"],
+    featured: false,
+    url: "https://www.fotor.com/"
+  },
+
+  {
+    name: "Picsart",
+    icon: "🎭",
+    category: "Image",
+    description: "Creative platform for photo and video editing with AI tools.",
+    tags: ["Photos", "Editing", "Creative"],
+    featured: false,
+    url: "https://picsart.com/"
+  },
+
+  {
+    name: "Freepik",
+    icon: "🧑‍🎨",
+    category: "Design",
+    description: "Creative platform with AI image generation and design resources.",
+    tags: ["Images", "Design", "Creative"],
+    featured: false,
+    url: "https://www.freepik.com/"
+  },
+
+  {
+    name: "NightCafe",
+    icon: "🌙",
+    category: "Image",
+    description: "AI art creation platform for generating creative artwork.",
+    tags: ["AI Art", "Images", "Creative"],
+    featured: false,
+    url: "https://nightcafe.studio/"
+  },
+
+  {
+    name: "Looka",
+    icon: "🔷",
+    category: "Design",
+    description: "AI-powered platform for creating logos and brand assets.",
+    tags: ["Logo", "Branding", "Design"],
+    featured: false,
+    url: "https://looka.com/"
+  },
+
+  {
+    name: "Uizard",
+    icon: "🧱",
+    category: "Design",
+    description: "AI design platform for creating app and website prototypes.",
+    tags: ["UI", "Prototyping", "Design"],
+    featured: false,
+    url: "https://uizard.io/"
+  },
+
+
+  // 36–48 VIDEO
+
+  {
+    name: "Runway",
+    icon: "🎬",
+    category: "Video",
+    description: "AI creative platform for generating and editing video.",
+    tags: ["Video", "Generation", "Editing"],
+    featured: true,
+    url: "https://runwayml.com/"
+  },
+
+  {
+    name: "Pika",
+    icon: "🎥",
+    category: "Video",
+    description: "AI video creation platform for generating and transforming videos.",
+    tags: ["Video", "AI", "Generation"],
+    featured: false,
+    url: "https://pika.art/"
+  },
+
+  {
+    name: "Synthesia",
+    icon: "👤",
+    category: "Video",
+    description: "AI avatar video platform for business, training and education.",
+    tags: ["Avatars", "Video", "Business"],
+    featured: false,
+    url: "https://www.synthesia.io/"
+  },
+
+  {
+    name: "HeyGen",
+    icon: "🗣️",
+    category: "Video",
+    description: "AI video platform for avatars, translation and video creation.",
+    tags: ["Avatars", "Video", "Translation"],
+    featured: true,
+    url: "https://www.heygen.com/"
+  },
+
+  {
+    name: "VEED",
+    icon: "🎞️",
+    category: "Video",
+    description: "Online video editor with AI-powered video creation features.",
+    tags: ["Video", "Editing", "AI"],
+    featured: false,
+    url: "https://www.veed.io/"
+  },
+
+  {
+    name: "InVideo",
+    icon: "📹",
+    category: "Video",
+    description: "Online video creation platform with AI-powered tools.",
+    tags: ["Video", "Editing", "AI"],
+    featured: false,
+    url: "https://invideo.io/"
+  },
+
+  {
+    name: "Descript",
+    icon: "🎙️",
+    category: "Video",
+    description: "Video and audio editor with transcript-based editing.",
+    tags: ["Video", "Audio", "Editing"],
+    featured: false,
+    url: "https://www.descript.com/"
+  },
+
+  {
+    name: "CapCut",
+    icon: "✂️",
+    category: "Video",
+    description: "Video editing platform with AI-powered creative features.",
+    tags: ["Editing", "Video", "AI"],
+    featured: true,
+    url: "https://www.capcut.com/"
+  },
+
+  {
+    name: "OpusClip",
+    icon: "📱",
+    category: "Video",
+    description: "AI tool for turning long videos into short-form clips.",
+    tags: ["Shorts", "Clips", "Video"],
+    featured: false,
+    url: "https://www.opus.pro/"
+  },
+
+  {
+    name: "D-ID",
+    icon: "🧑",
+    category: "Video",
+    description: "AI platform for creating digital talking avatar videos.",
+    tags: ["Avatar", "Video", "AI"],
+    featured: false,
+    url: "https://www.d-id.com/"
+  },
+
+  {
+    name: "Luma Dream Machine",
+    icon: "🌌",
+    category: "Video",
+    description: "AI video generation platform for creative video production.",
+    tags: ["Video", "Generation", "AI"],
+    featured: false,
+    url: "https://lumalabs.ai/dream-machine"
+  },
+
+  {
+    name: "Lumen5",
+    icon: "💡",
+    category: "Video",
+    description: "AI-powered platform for turning content into videos.",
+    tags: ["Video", "Content", "Marketing"],
+    featured: false,
+    url: "https://lumen5.com/"
+  },
+
+  {
+    name: "Captions",
+    icon: "💬",
+    category: "Video",
+    description: "AI-powered video creation, captions and editing platform.",
+    tags: ["Captions", "Video", "Editing"],
+    featured: false,
+    url: "https://www.captions.ai/"
+  },
+
+
+  // 49–58 AUDIO & MUSIC
+
+  {
+    name: "ElevenLabs",
+    icon: "🔊",
+    category: "Audio",
+    description: "AI voice platform for speech, narration and audio creation.",
+    tags: ["Voice", "Audio", "Speech"],
+    featured: true,
+    url: "https://elevenlabs.io/"
+  },
+
+  {
+    name: "Murf",
+    icon: "🎤",
+    category: "Audio",
+    description: "AI voice generator for videos, presentations and narration.",
+    tags: ["Voice", "Narration", "Audio"],
+    featured: false,
+    url: "https://murf.ai/"
+  },
+
+  {
+    name: "PlayHT",
+    icon: "🗣️",
+    category: "Audio",
+    description: "AI voice and text-to-speech platform.",
+    tags: ["Voice", "TTS", "Audio"],
+    featured: false,
+    url: "https://play.ht/"
+  },
+
+  {
+    name: "Speechify",
+    icon: "📖",
+    category: "Audio",
+    description: "Text-to-speech platform for listening to digital text.",
+    tags: ["TTS", "Reading", "Audio"],
+    featured: false,
+    url: "https://speechify.com/"
+  },
+
+  {
+    name: "Suno",
+    icon: "🎵",
+    category: "Music",
+    description: "AI platform for creating songs and music from prompts.",
+    tags: ["Music", "Songs", "AI"],
+    featured: true,
+    url: "https://suno.com/"
+  },
+
+  {
+    name: "Udio",
+    icon: "🎶",
+    category: "Music",
+    description: "AI music creation platform for generating original music.",
+    tags: ["Music", "Songs", "AI"],
+    featured: false,
+    url: "https://www.udio.com/"
+  },
+
+  {
+    name: "AIVA",
+    icon: "🎼",
+    category: "Music",
+    description: "AI music composition platform for creating soundtracks.",
+    tags: ["Music", "Composition", "Audio"],
+    featured: false,
+    url: "https://www.aiva.ai/"
+  },
+
+  {
+    name: "Soundraw",
+    icon: "🎧",
+    category: "Music",
+    description: "AI music generator for creators and content production.",
+    tags: ["Music", "Creators", "Audio"],
+    featured: false,
+    url: "https://soundraw.io/"
+  },
+
+  {
+    name: "Krisp",
+    icon: "🎙️",
+    category: "Audio",
+    description: "AI-powered noise cancellation for calls and meetings.",
+    tags: ["Audio", "Meetings", "Noise"],
+    featured: false,
+    url: "https://krisp.ai/"
+  },
+
+  {
+    name: "Adobe Podcast",
+    icon: "🎙️",
+    category: "Audio",
+    description: "AI audio tools for recording and improving speech.",
+    tags: ["Audio", "Podcast", "Enhancement"],
+    featured: false,
+    url: "https://podcast.adobe.com/"
+  },
+
+
+  // 59–70 CODING
+
+  {
+    name: "GitHub Copilot",
+    icon: "🐙",
+    category: "Coding",
+    description: "AI coding assistant integrated into developer workflows.",
+    tags: ["Coding", "Developer", "GitHub"],
+    featured: true,
+    url: "https://github.com/features/copilot"
+  },
+
+  {
+    name: "Cursor",
+    icon: "⌨️",
+    category: "Coding",
+    description: "AI-powered code editor for software development.",
+    tags: ["Coding", "Editor", "Developer"],
+    featured: true,
+    url: "https://www.cursor.com/"
+  },
+
+  {
+    name: "Replit",
+    icon: "🟠",
+    category: "Coding",
+    description: "Online development platform with AI-assisted coding.",
+    tags: ["Coding", "Apps", "Developer"],
+    featured: false,
+    url: "https://replit.com/"
+  },
+
+  {
+    name: "Bolt.new",
+    icon: "⚡",
+    category: "Coding",
+    description: "AI-powered platform for building web applications.",
+    tags: ["Coding", "Web", "Apps"],
+    featured: true,
+    url: "https://bolt.new/"
+  },
+
+  {
+    name: "Lovable",
+    icon: "💜",
+    category: "Coding",
+    description: "AI platform for building web applications from natural language.",
+    tags: ["Apps", "Web", "AI"],
+    featured: true,
+    url: "https://lovable.dev/"
+  },
+
+  {
+    name: "v0",
+    icon: "▲",
+    category: "Coding",
+    description: "AI interface generator for web UI and applications.",
+    tags: ["UI", "Web", "Coding"],
+    featured: false,
+    url: "https://v0.dev/"
+  },
+
+  {
+    name: "Tabnine",
+    icon: "🔮",
+    category: "Coding",
+    description: "AI coding assistant for developers and teams.",
+    tags: ["Coding", "Developer", "AI"],
+    featured: false,
+    url: "https://www.tabnine.com/"
+  },
+
+  {
+    name: "Windsurf",
+    icon: "🏄",
+    category: "Coding",
+    description: "AI-powered development environment for software development.",
+    tags: ["Coding", "IDE", "Developer"],
+    featured: false,
+    url: "https://windsurf.com/"
+  },
+
+  {
+    name: "Blackbox AI",
+    icon: "⬛",
+    category: "Coding",
+    description: "AI coding assistant for developers and programming tasks.",
+    tags: ["Coding", "Developer", "AI"],
+    featured: false,
+    url: "https://www.blackbox.ai/"
+  },
+
+  {
+    name: "Phind",
+    icon: "🔍",
+    category: "Coding",
+    description: "AI search and assistant designed for developers.",
+    tags: ["Coding", "Search", "Developer"],
+    featured: false,
+    url: "https://www.phind.com/"
+  },
+
+  {
+    name: "Hugging Face",
+    icon: "🤗",
+    category: "AI Development",
+    description: "Platform for AI models, datasets and machine learning applications.",
+    tags: ["Models", "AI", "Developer"],
+    featured: true,
+    url: "https://huggingface.co/"
+  },
+
+  {
+    name: "Amazon Q Developer",
+    icon: "☁️",
+    category: "Coding",
+    description: "AI assistant for software development and cloud workflows.",
+    tags: ["AWS", "Coding", "Cloud"],
+    featured: false,
+    url: "https://aws.amazon.com/q/developer/"
+  },
+
+
+  // 71–82 PRODUCTIVITY & PRESENTATIONS
+
+  {
+    name: "Notion AI",
+    icon: "📒",
+    category: "Productivity",
+    description: "AI features for writing, summarizing and organizing workspace content.",
+    tags: ["Notes", "Writing", "Productivity"],
+    featured: true,
+    url: "https://www.notion.com/product/ai"
+  },
+
+  {
+    name: "Otter.ai",
+    icon: "🦦",
+    category: "Productivity",
+    description: "AI meeting assistant for transcription, notes and summaries.",
+    tags: ["Meetings", "Notes", "Transcription"],
+    featured: false,
+    url: "https://otter.ai/"
+  },
+
+  {
+    name: "Fireflies.ai",
+    icon: "🔥",
+    category: "Productivity",
+    description: "AI meeting assistant for recording, transcription and summaries.",
+    tags: ["Meetings", "Transcription", "AI"],
+    featured: false,
+    url: "https://fireflies.ai/"
+  },
+
+  {
+    name: "Fathom",
+    icon: "📊",
+    category: "Productivity",
+    description: "AI meeting assistant for recording and summarizing calls.",
+    tags: ["Meetings", "Notes", "AI"],
+    featured: false,
+    url: "https://fathom.video/"
+  },
+
+  {
+    name: "Gamma",
+    icon: "📊",
+    category: "Presentations",
+    description: "AI platform for creating presentations, documents and webpages.",
+    tags: ["Presentations", "Documents", "AI"],
+    featured: true,
+    url: "https://gamma.app/"
+  },
+
+  {
+    name: "Beautiful.ai",
+    icon: "💎",
+    category: "Presentations",
+    description: "Presentation software with AI-assisted slide creation.",
+    tags: ["Slides", "Design", "AI"],
+    featured: false,
+    url: "https://www.beautiful.ai/"
+  },
+
+  {
+    name: "Taskade",
+    icon: "✅",
+    category: "Productivity",
+    description: "AI workspace for projects, tasks and team collaboration.",
+    tags: ["Tasks", "Projects", "AI"],
+    featured: false,
+    url: "https://www.taskade.com/"
+  },
+
+  {
+    name: "Mem",
+    icon: "🧠",
+    category: "Productivity",
+    description: "AI-powered workspace for notes and personal knowledge.",
+    tags: ["Notes", "Knowledge", "AI"],
+    featured: false,
+    url: "https://mem.ai/"
+  },
+
+  {
+    name: "Motion",
+    icon: "📅",
+    category: "Productivity",
+    description: "AI productivity platform for planning tasks and schedules.",
+    tags: ["Planning", "Calendar", "Productivity"],
+    featured: false,
+    url: "https://www.usemotion.com/"
+  },
+
+  {
   name: "ClickUp",
-  icon: "✅",
+  icon: "🔵",
   category: "Productivity",
-  description: "Productivity platform for tasks, projects, documents and team collaboration.",
-  tags: ["Tasks", "Projects", "Productivity"],
-  featured: true,
+  description: "Project management platform with AI productivity features.",
+  tags: ["Projects", "Tasks", "AI"],
+  featured: false,
   url: "https://clickup.com/"
-},
+}
 
-{
-  name: "Motion",
-  icon: "📅",
-  category: "Productivity",
-  description: "Productivity platform for planning tasks, projects and schedules.",
-  tags: ["Calendar", "Tasks", "Productivity"],
-  featured: false,
-  url: "https://www.usemotion.com/"
-},
-
-{
-  name: "Fireflies.ai",
-  icon: "🔥",
-  category: "Productivity",
-  description: "AI meeting assistant for recording, transcription and meeting summaries.",
-  tags: ["Meetings", "Notes", "AI"],
-  featured: true,
-  url: "https://fireflies.ai/"
-},
-
-{
-  name: "Fathom",
-  icon: "📝",
-  category: "Productivity",
-  description: "AI meeting assistant for recording, transcribing and summarizing meetings.",
-  tags: ["Meetings", "Transcription", "AI"],
-  featured: false,
-  url: "https://fathom.video/"
-},
-
-{
-  name: "Mem",
-  icon: "🧠",
-  category: "Productivity",
-  description: "AI-powered workspace for organizing and retrieving personal knowledge.",
-  tags: ["Notes", "Knowledge", "AI"],
-  featured: false,
-  url: "https://mem.ai/"
-},
-
-{
-  name: "Read AI",
-  icon: "📖",
-  category: "Productivity",
-  description: "AI platform for meeting summaries, insights and communication analytics.",
-  tags: ["Meetings", "Productivity", "AI"],
-  featured: false,
-  url: "https://www.read.ai/"
-},
-
-{
-  name: "Beautiful.ai",
-  icon: "📊",
-  category: "Presentation",
-  description: "Presentation software with AI-assisted slide creation and design.",
-  tags: ["Presentations", "Slides", "AI"],
-  featured: false,
-  url: "https://www.beautiful.ai/"
-},
-
-{
-  name: "Tome",
-  icon: "📑",
-  category: "Presentation",
-  description: "AI-powered tool for creating presentations and visual storytelling.",
-  tags: ["Presentations", "Storytelling", "AI"],
-  featured: false,
-  url: "https://tome.app/"
-},
-
-{
-  name: "Pitch",
-  icon: "📈",
-  category: "Presentation",
-  description: "Collaborative presentation platform for creating professional decks.",
-  tags: ["Presentations", "Business", "Design"],
-  featured: false,
-  url: "https://pitch.com/"
-},
-
-{
-  name: "SlidesAI",
-  icon: "📽️",
-  category: "Presentation",
-  description: "AI tool for creating presentation slides from text.",
-  tags: ["Slides", "Presentations", "AI"],
-  featured: false,
-  url: "https://www.slidesai.io/"
-},
-
-{
-  name: "Semrush",
-  icon: "📈",
-  category: "SEO",
-  description: "Digital marketing platform for SEO, keywords and competitive research.",
-  tags: ["SEO", "Marketing", "Research"],
-  featured: true,
-  url: "https://www.semrush.com/"
-},
-
-{
-  name: "Ahrefs",
-  icon: "🔗",
-  category: "SEO",
-  description: "SEO platform for keyword research, backlinks and website analysis.",
-  tags: ["SEO", "Backlinks", "Research"],
-  featured: true,
-  url: "https://ahrefs.com/"
-},
-
-{
-  name: "Surfer",
-  icon: "🏄",
-  category: "SEO",
-  description: "SEO content platform for optimizing articles and improving search visibility.",
-  tags: ["SEO", "Content", "Optimization"],
-  featured: false,
-  url: "https://surferseo.com/"
-},
-
-{
-  name: "Frase",
-  icon: "📄",
-  category: "SEO",
-  description: "AI-powered platform for SEO research and content optimization.",
-  tags: ["SEO", "Content", "AI"],
-  featured: false,
-  url: "https://www.frase.io/"
-},
-
-{
-  name: "Copy.ai",
-  icon: "📋",
-  category: "Marketing",
-  description: "AI platform for marketing content and business workflows.",
-  tags: ["Marketing", "Content", "AI"],
-  featured: true,
-  url: "https://www.copy.ai/"
-},
-
-{
-  name: "Writesonic",
-  icon: "✍️",
-  category: "Marketing",
-  description: "AI platform for content creation, marketing and search optimization.",
-  tags: ["Marketing", "Content", "SEO"],
-  featured: false,
-  url: "https://writesonic.com/"
-},
-
-{
-  name: "QuillBot",
-  icon: "📝",
-  category: "Writing",
-  description: "AI writing tool for paraphrasing, summarizing and improving text.",
-  tags: ["Writing", "Paraphrasing", "AI"],
-  featured: true,
-  url: "https://quillbot.com/"
-},
-
-{
-  name: "Wordtune",
-  icon: "🔤",
-  category: "Writing",
-  description: "AI writing tool for rewriting and improving text.",
-  tags: ["Writing", "Editing", "AI"],
-  featured: false,
-  url: "https://www.wordtune.com/"
-},
-
-{
-  name: "DeepL",
-  icon: "🌍",
-  category: "Translation",
-  description: "AI translation and writing platform supporting many languages.",
-  tags: ["Translation", "Language", "AI"],
-  featured: true,
-  url: "https://www.deepl.com/"
-},
-
-{
-  name: "LanguageTool",
-  icon: "🔤",
-  category: "Writing",
-  description: "Writing assistant for grammar, spelling and style corrections.",
-  tags: ["Grammar", "Writing", "Editing"],
-  featured: false,
-  url: "https://languagetool.org/"
-},
-
-{
-  name: "Elicit",
-  icon: "🔬",
-  category: "Research",
-  description: "AI research assistant for finding and analyzing academic papers.",
-  tags: ["Research", "Academic", "AI"],
-  featured: false,
-  url: "https://elicit.com/"
-},
-
-{
-  name: "Consensus",
-  icon: "📚",
-  category: "Research",
-  description: "AI research search engine focused on scientific studies and papers.",
-  tags: ["Research", "Science", "Academic"],
-  featured: true,
-  url: "https://consensus.app/"
-},
-
-{
-  name: "Scite",
-  icon: "🔎",
-  category: "Research",
-  description: "Research platform for discovering and evaluating scientific literature.",
-  tags: ["Research", "Science", "Papers"],
-  featured: false,
-  url: "https://scite.ai/"
-},
-
-{
-  name: "Rytr",
-  icon: "🖊️",
-  category: "Writing",
-  description: "AI writing assistant for creating and improving different types of content.",
-  tags: ["Writing", "Content", "AI"],
-  featured: false,
-  url: "https://rytr.me/"
-},
-
-{
-  name: "Manus",
-  icon: "🧠",
-  category: "AI Agent",
-  description: "AI agent platform designed to perform multi-step tasks and workflows.",
-  tags: ["AI", "Agents", "Automation"],
-  featured: true,
-  url: "https://manus.im/"
-},
-
-{
-  name: "Genspark",
-  icon: "✨",
-  category: "AI Assistant",
-  description: "AI workspace designed for research, content creation and task automation.",
-  tags: ["AI", "Research", "Agents"],
-  featured: true,
-  url: "https://www.genspark.ai/"
-},
-
-{
-  name: "Flowise",
-  icon: "🔀",
-  category: "AI Platform",
-  description: "Open-source visual platform for building AI applications and workflows.",
-  tags: ["AI", "Automation", "Developer"],
-  featured: false,
-  url: "https://flowiseai.com/"
-},
-
-{
-  name: "D-ID",
-  icon: "🧑‍🎤",
-  category: "Video",
-  description: "AI video platform for creating digital presenters and talking-avatar content.",
-  tags: ["Video", "Avatars", "AI"],
-  featured: false,
-  url: "https://www.d-id.com/"
-},
-
-{
-  name: "AssemblyAI",
-  icon: "🎙️",
-  category: "Audio",
-  description: "AI speech platform providing transcription and audio intelligence APIs.",
-  tags: ["Audio", "Speech", "API"],
-  featured: false,
-  url: "https://www.assemblyai.com/"
-        }     
-
-
+];
+   
     const grid = document.getElementById("toolsGrid");
     const searchInput = document.getElementById("searchInput");
     const resultCount = document.getElementById("resultCount");
