@@ -1368,8 +1368,12 @@
             tool.tags.join(" ")
           ).toLowerCase();
 
-        const matchesSearch =
-          searchableText.includes(searchTerm);
+        const searchWords = searchTerm.split(/\s+/).filter(Boolean);
+
+const matchesSearch =
+  searchWords.every(word =>
+    searchableText.includes(word)
+  );
 
         return matchesCategory && matchesSearch;
 
