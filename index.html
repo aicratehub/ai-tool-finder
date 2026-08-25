@@ -202,14 +202,28 @@
     }
 
     .category-btn {
-      border: 1px solid var(--border);
-      background: #0d1016;
-      color: var(--muted);
-      padding: 10px 15px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+  border: 1px solid var(--border);
+  background: #0d1016;
+  color: var(--muted);
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.category-btn:hover {
+  border-color: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.category-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
 
     .category-btn:hover,
     .category-btn.active {
