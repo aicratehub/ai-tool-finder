@@ -436,6 +436,23 @@
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+      const googleLoginBtn = document.getElementById("googleLoginBtn");
+
+googleLoginBtn.addEventListener("click", async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    googleLoginBtn.innerHTML =
+      `👤 ${user.displayName || "Account"}`;
+
+    console.log("Logged in:", user.email);
+
+  } catch (error) {
+    console.error("Google Login Error:", error);
+    alert("Google login failed. Please try again.");
+  }
+});
       </script>
       </head>
 
