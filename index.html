@@ -439,8 +439,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebas
 import {
   getAuth,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
@@ -459,37 +458,36 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-  getRedirectResult(auth)
-  .then((result) => {
-    if (result && result.user) {
-      console.log("Google login successful:", result.user.email);
-    }
-  })
-  .catch((error) => {
-    console.error("Google login error:", error);
-  });
 
 const googleLoginBtn = document.getElementById("googleLoginBtn");
 
-function googleLoginHandler() {
-  signInWithRedirect(auth, googleProvider);
+async function googleLoginHandler() {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    console.log("Google login successful:", result.user.email);
+  } catch (error) {
+    console.error("Google login error:", error);
+    alert("Google login failed: " + error.code);
+  }
 }
-
-googleLoginBtn.addEventListener("click", googleLoginHandler);
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     googleLoginBtn.innerHTML = "Sign Out";
-    googleLoginBtn.onclick = () => {
-      signOut(auth);
+
+    googleLoginBtn.onclick = async () => {
+      await signOut(auth);
       googleLoginBtn.innerHTML = '<span>G</span> Sign in';
       googleLoginBtn.onclick = googleLoginHandler;
     };
+
   } else {
     googleLoginBtn.innerHTML = '<span>G</span> Sign in';
+    googleLoginBtn.onclick = googleLoginHandler;
   }
 });
 </script>
+
   </div>
   </nav>
 
