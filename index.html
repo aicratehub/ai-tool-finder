@@ -419,8 +419,7 @@
     getAuth,
     GoogleAuthProvider,
     signInWithRedirect,
-    onAuthStateChanged,
-    signOut
+    getRedirectResult
   } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
   const firebaseConfig = {
@@ -432,22 +431,39 @@
     appId: "1:482762171084:web:1c032d586018bf47941869",
     measurementId: "G-26CV4M4F62"
   };
-      const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
-      const googleLoginBtn = document.getElementById("googleLoginBtn");
 
-googleLoginBtn.addEventListener("click", async () => {
-  try {
-    await signInWithRedirect(auth, googleProvider);
-    
-  } catch (error) {
-    console.error("Google Login Error:", error);
-    alert("Google login failed. Please try again.");
-  }
-});
-      </script>
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  const googleLoginBtn =
+    document.getElementById("googleLoginBtn");
+
+  googleLoginBtn.addEventListener("click", async () => {
+    try {
+      await signInWithRedirect(auth, googleProvider);
+    } catch (error) {
+      console.error("Google Login Error:", error);
+      alert(error.code + " — " + error.message);
+    }
+  });
+
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result && result.user) {
+        googleLoginBtn.innerHTML =
+          `👤 ${result.user.displayName || "Account"}`;
+
+        console.log("Logged in:", result.user.email);
+      }
+    })
+    .catch((error) => {
+      console.error("Redirect Login Error:", error);
+      alert(error.code + " — " + error.message);
+    });
+
+    </script>
       </head>
 
 <body>
