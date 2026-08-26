@@ -405,9 +405,66 @@
         align-items: flex-end;
       }
     }
+<script type="module">
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-      
+  import { getAnalytics }
+    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+  import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDafwR5-8gWuF-P92QtN1XTVaK3X8IWbF0",
+    authDomain: "ai-tool-finder-14.firebaseapp.com",
+    projectId: "ai-tool-finder-14",
+    storageBucket: "ai-tool-finder-14.firebasestorage.app",
+    messagingSenderId: "482762171084",
+    appId: "1:482762171084:web:1c032d586018bf47941869",
+    measurementId: "G-26CV4M4F62"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  const googleLoginBtn =
+    document.getElementById("googleLoginBtn");
+
+  googleLoginBtn.addEventListener("click", async () => {
+    try {
+      await signInWithRedirect(auth, googleProvider);
+    } catch (error) {
+      console.error("Google Login Error:", error);
+      alert(error.code + " — " + error.message);
+    }
+  });
+
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result && result.user) {
+        googleLoginBtn.innerHTML =
+          `👤 ${result.user.displayName || "Account"}`;
+
+        console.log("Logged in:", result.user.email);
+      }
+    })
+    .catch((error) => {
+      console.error("Redirect Login Error:", error);
+      alert(error.code + " — " + error.message);
+    });
+
+</script>
+    
       </head>
+    
           
 
 <body>
