@@ -1489,22 +1489,6 @@ function getHistoryTools() {
 
 /* FEATURE BUTTONS */
 
-const featureBar = document.createElement("div");
-
-featureBar.className = "tool-feature-bar";
-
-featureBar.innerHTML = `
-  <button id="showFavoritesBtn" class="feature-btn">
-    ⭐ Favorites <span id="favoriteCount">0</span>
-  </button>
-
-  <button id="showHistoryBtn" class="feature-btn">
-    🕘 History <span id="historyCount">0</span>
-  </button>
-`;
-
-grid.parentNode.insertBefore(featureBar, grid);
-
 
 function updateCounts() {
 
