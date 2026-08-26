@@ -1414,20 +1414,460 @@ onAuthStateChanged(auth, (user) => {
 }
 
 ];
-   
     const grid = document.getElementById("toolsGrid");
-    const searchInput = document.getElementById("searchInput");
-    const resultCount = document.getElementById("resultCount");
-    const emptyState = document.getElementById("emptyState");
-    const categoryButtons = document.querySelectorAll(".category-btn");
+const searchInput = document.getElementById("searchInput");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
+const categoryButtons = document.querySelectorAll(".category-btn");
 
-    let currentCategory = "All";
+let currentCategory = "All";
+
+let favorites = JSON.parse(
+  localStorage.getItem("aiToolFinderFavorites") || "[]"
+);
+
+let history = JSON.parse(
+  localStorage.getItem("aiToolFinderHistory") || "[]"
+);
+
+function getToolId(tool) {
+  return tool.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function saveFavorites() {
+  localStorage.setItem(
+    "aiToolFinderFavorites",
+    JSON.stringify(favorites)
+  );
+}
+
+function saveHistory() {
+  localStorage.setItem(
+    "aiToolFinderHistory",
+    JSON.stringify(history)
+  );
+}
+
+function isFavorite(tool) {
+  return favorites.includes(getToolId(tool));
+}
+
+function toggleFavorite(tool) {
+  const id = getToolId(tool);
+
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(item => item !== id);
+  } else {
+    favorites.push(id);
+  }
+
+  saveFavorites();
+  displayTools();
+  updateCounts();
+}
+
+function addToHistory(tool) {
+  const id = getToolId(tool);
+
+  history = history.filter(item => item !== id);
+  history.unshift(id);
+  history = history.slice(0, 20);
+
+  saveHistory();
+  updateCounts();
+}
+
+function getFavoriteTools() {
+  return favorites
+    .map(id => tools.find(tool => getToolId(tool) === id))
+    .filter(Boolean);
+}
+
+function getHistoryTools() {
+  return history
+    .map(id => tools.find(tool => getToolId(tool) === id))
+    .filter(Boolean);
+}
 
 
-    /*
-      DISPLAY TOOLS
-    */
+/* FEATURE BUTTONS */
 
+const featureBar = document.createElement("div");
+
+featureBar.className = "tool-feature-bar";
+
+featureBar.innerHTML = `
+  <button id="showFavoritesBtn" class="feature-btn">
+    ⭐ Favorites <span id="favoriteCount">0</span>
+  </button>
+
+  <button id="showHistoryBtn" class="feature-btn">
+    🕘 History <span id="historyCount">0</span>
+  </button>
+`;
+
+grid.parentNode.insertBefore(featureBar, grid);
+
+
+/* FEATURE PANEL */
+
+const featurePanel = document.createElement("div");
+
+featurePanel.className = "feature-panel";
+featurePanel.style.display = "none";
+
+grid.parentNode.insertBefore(featurePanel, grid);
+
+
+function updateCounts() {
+
+  document.getElementById("favoriteCount").textContent =
+    favorites.length;
+
+  document.getElementById("historyCount").textContent =
+    history.length;
+}
+
+
+/* CREATE CARD */
+
+function createToolCard(tool) {
+
+  const card = document.createElement("div");
+
+  card.className = "tool-card";
+
+  card.innerHTML = `
+
+    <div class="tool-top">
+
+      <div class="tool-icon">
+        ${tool.icon}
+      </div>
+
+      ${
+        tool.featured
+        ? `<div class="featured">★ Featured</div>`
+        : ""
+      }
+
+      <button
+        class="favorite-btn ${isFavorite(tool) ? "active" : ""}"
+        type="button"
+        aria-label="Favorite ${tool.name}"
+      >
+        ${isFavorite(tool) ? "♥" : "♡"}
+      </button>
+
+    </div>
+
+    <h3>${tool.name}</h3>
+
+    <p>${tool.description}</p>
+
+    <div class="tags">
+      ${tool.tags
+        .map(tag => `<span class="tag">${tag}</span>`)
+        .join("")
+      }
+    </div>
+
+    <a
+      class="visit-btn"
+      href="${tool.url}"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Visit Tool →
+    </a>
+  `;
+
+
+  const favoriteBtn =
+    card.querySelector(".favorite-btn");
+
+  favoriteBtn.addEventListener("click", (event) => {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    toggleFavorite(tool);
+
+  });
+
+
+  const visitBtn =
+    card.querySelector(".visit-btn");
+
+  visitBtn.addEventListener("click", () => {
+    addToHistory(tool);
+  });
+
+
+  return card;
+}
+
+
+/* DISPLAY TOOLS */
+
+function displayTools() {
+
+  featurePanel.style.display = "none";
+
+  const searchTerm =
+    searchInput.value.toLowerCase().trim();
+
+  const filteredTools = tools.filter(tool => {
+
+    const matchesCategory =
+      currentCategory === "All" ||
+      tool.category === currentCategory;
+
+    const searchableText = (
+      tool.name +
+      " " +
+      tool.category +
+      " " +
+      tool.description +
+      " " +
+      tool.tags.join(" ")
+    ).toLowerCase();
+
+    const searchWords =
+      searchTerm.split(/\s+/).filter(Boolean);
+
+    const matchesSearch =
+      searchWords.every(word =>
+        searchableText.includes(word)
+      );
+
+    return matchesCategory && matchesSearch;
+  });
+
+
+  grid.innerHTML = "";
+
+
+  filteredTools.forEach(tool => {
+    grid.appendChild(
+      createToolCard(tool)
+    );
+  });
+
+
+  resultCount.textContent =
+    `${filteredTools.length} ${
+      filteredTools.length === 1
+      ? "tool"
+      : "tools"
+    }`;
+
+
+  emptyState.style.display =
+    filteredTools.length === 0
+    ? "block"
+    : "none";
+
+  updateCounts();
+}
+
+
+/* FAVORITES */
+
+function showFavorites() {
+
+  const favoriteTools = getFavoriteTools();
+
+  grid.innerHTML = "";
+
+  emptyState.style.display = "none";
+
+  featurePanel.style.display = "block";
+
+  featurePanel.innerHTML = `
+    <div class="feature-panel-header">
+
+      <h3>⭐ My Favorites</h3>
+
+      ${
+        favoriteTools.length > 0
+        ? `<button id="clearFavoritesBtn" class="clear-feature-btn">
+             Clear All
+           </button>`
+        : ""
+      }
+
+    </div>
+  `;
+
+
+  if (favoriteTools.length === 0) {
+
+    featurePanel.innerHTML += `
+      <div class="feature-empty">
+        <div>⭐</div>
+        <h3>No favorites yet</h3>
+        <p>Tap ♡ on any AI tool to save it here.</p>
+      </div>
+    `;
+
+  } else {
+
+    favoriteTools.forEach(tool => {
+
+      grid.appendChild(
+        createToolCard(tool)
+      );
+
+    });
+
+
+    document
+      .getElementById("clearFavoritesBtn")
+      .addEventListener("click", () => {
+
+        favorites = [];
+
+        saveFavorites();
+
+        showFavorites();
+
+        updateCounts();
+
+      });
+  }
+
+
+  resultCount.textContent =
+    `${favoriteTools.length} ${
+      favoriteTools.length === 1
+      ? "favorite"
+      : "favorites"
+    }`;
+}
+
+
+/* HISTORY */
+
+function showHistory() {
+
+  const historyTools = getHistoryTools();
+
+  grid.innerHTML = "";
+
+  emptyState.style.display = "none";
+
+  featurePanel.style.display = "block";
+
+  featurePanel.innerHTML = `
+    <div class="feature-panel-header">
+
+      <h3>🕘 Recently Viewed</h3>
+
+      ${
+        historyTools.length > 0
+        ? `<button id="clearHistoryBtn" class="clear-feature-btn">
+             Clear History
+           </button>`
+        : ""
+      }
+
+    </div>
+  `;
+
+
+  if (historyTools.length === 0) {
+
+    featurePanel.innerHTML += `
+      <div class="feature-empty">
+        <div>🕘</div>
+        <h3>No history yet</h3>
+        <p>Tools you visit will appear here.</p>
+      </div>
+    `;
+
+  } else {
+
+    historyTools.forEach(tool => {
+
+      grid.appendChild(
+        createToolCard(tool)
+      );
+
+    });
+
+
+    document
+      .getElementById("clearHistoryBtn")
+      .addEventListener("click", () => {
+
+        history = [];
+
+        saveHistory();
+
+        showHistory();
+
+        updateCounts();
+
+      });
+  }
+
+
+  resultCount.textContent =
+    `${historyTools.length} ${
+      historyTools.length === 1
+      ? "recent tool"
+      : "recent tools"
+    }`;
+}
+
+
+/* BUTTONS */
+
+document
+  .getElementById("showFavoritesBtn")
+  .addEventListener("click", showFavorites);
+
+document
+  .getElementById("showHistoryBtn")
+  .addEventListener("click", showHistory);
+
+
+/* SEARCH */
+
+searchInput.addEventListener(
+  "input",
+  displayTools
+);
+
+
+/* CATEGORIES */
+
+categoryButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    categoryButtons.forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    currentCategory =
+      button.dataset.category;
+
+    displayTools();
+
+  });
+
+});
+
+
+/* INITIAL LOAD */
+
+displayTools();
+   
+    
     function displayTools() {
 
       const searchTerm =
