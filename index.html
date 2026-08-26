@@ -418,6 +418,7 @@
   import {
     getAuth,
     GoogleAuthProvider,
+    signInWithRedirect,
     onAuthStateChanged,
     signOut
   } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
@@ -439,14 +440,8 @@ const googleProvider = new GoogleAuthProvider();
 
 googleLoginBtn.addEventListener("click", async () => {
   try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-
-    googleLoginBtn.innerHTML =
-      `👤 ${user.displayName || "Account"}`;
-
-    console.log("Logged in:", user.email);
-
+    await signInWithRedirect(auth, googleProvider);
+    
   } catch (error) {
     console.error("Google Login Error:", error);
     alert("Google login failed. Please try again.");
